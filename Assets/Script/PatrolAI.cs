@@ -1,8 +1,12 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class PatrollAI : MonoBehaviour
+public class PatrolAI : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private float speed;
+    [SerializeField] private Transform[] waypoints;
+
+    private int currentWaypoint;
     void Start()
     {
         
@@ -11,6 +15,13 @@ public class PatrollAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(transform.position != waypoints[currentWaypoint].position)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, waypoints[currentWaypoint].position, speed * Time.deltaTime);
+        }
+        else
+        {
+            currentWaypoint++;
+        }
     }
 }
