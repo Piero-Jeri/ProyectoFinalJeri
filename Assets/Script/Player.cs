@@ -23,15 +23,15 @@ public class Player : BaseEntity
     public Vector2 MoveInput;
     public float MoveSpeed;
 
-    public CircleCollider2D coll;
+   //public CircleCollider2D coll;
     public float range;
 
     public List<GameObject> Enemys = new();
 
     private void Awake()
     {
-        coll = GetComponent<CircleCollider2D>();
-        coll.radius = range;
+      //  coll = GetComponent<CircleCollider2D>();
+      //  coll.radius = range;
 
         inputs = new();
     }
