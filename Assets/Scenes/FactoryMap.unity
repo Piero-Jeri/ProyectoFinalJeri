@@ -10713,7 +10713,7 @@ GameObject:
   - component: {fileID: 831615903}
   m_Layer: 0
   m_Name: Enemy (4)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10752,6 +10752,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae755f1781ddbe0479b34cfe03d7c3e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrollAI
+  EnemyData: {fileID: 0}
+  aparitionTime: 0
   speed: 4
   waypoints:
   - {fileID: 311613099}
@@ -11439,6 +11441,8 @@ MonoBehaviour:
   element: 0
   playerController: 1
   animator: {fileID: 1003075410}
+  controladorDisparo: {fileID: 0}
+  rango: 0
   MoveInput: {x: 0, y: 0}
   MoveSpeed: 5
   range: 0
@@ -11612,6 +11616,37 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.70691764, y: 1.0937864}
   m_EdgeRadius: 0
+--- !u!1 &1014077084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1014077085}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1014077085
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014077084}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5, y: 11.95, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1026814920
 GameObject:
   m_ObjectHideFlags: 0
@@ -11626,7 +11661,7 @@ GameObject:
   - component: {fileID: 1026814921}
   m_Layer: 0
   m_Name: Enemy (2)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11665,6 +11700,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae755f1781ddbe0479b34cfe03d7c3e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrollAI
+  EnemyData: {fileID: 0}
+  aparitionTime: 0
   speed: 4
   waypoints:
   - {fileID: 2038027145}
@@ -11863,7 +11900,7 @@ GameObject:
   - component: {fileID: 1353369167}
   m_Layer: 0
   m_Name: Enemy (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11880,6 +11917,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae755f1781ddbe0479b34cfe03d7c3e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrollAI
+  EnemyData: {fileID: 0}
+  aparitionTime: 0
   speed: 4
   waypoints:
   - {fileID: 221811159}
@@ -11977,7 +12016,7 @@ Transform:
   m_GameObject: {fileID: 1353369163}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 11.9, z: 0}
+  m_LocalPosition: {x: 5.08, y: 12.02, z: 0}
   m_LocalScale: {x: 0.91224563, y: 0.91224563, z: 0.91224563}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15620,7 +15659,7 @@ GameObject:
   - component: {fileID: 1690635090}
   m_Layer: 0
   m_Name: Enemy (3)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15637,6 +15676,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae755f1781ddbe0479b34cfe03d7c3e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrollAI
+  EnemyData: {fileID: 0}
+  aparitionTime: 0
   speed: 4
   waypoints:
   - {fileID: 485318570}
@@ -15824,6 +15865,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae755f1781ddbe0479b34cfe03d7c3e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrollAI
+  EnemyData: {fileID: 0}
+  aparitionTime: 0
   speed: 4
   waypoints:
   - {fileID: 1958848213}
@@ -16885,3 +16928,4 @@ SceneRoots:
   - {fileID: 1690635092}
   - {fileID: 982975767}
   - {fileID: 758941740}
+  - {fileID: 1014077085}

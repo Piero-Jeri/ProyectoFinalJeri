@@ -4,20 +4,55 @@ using UnityEngine;
 
 public class PatrolAI : MonoBehaviour
 {
+    public EnemyData EnemyData;
+
+    [SerializeField] private float aparitionTime = 0;
+
+    private bool Vulnerable = true;
+
     [SerializeField] private float speed;
     //[SerializeField] private float waitTime;
     [SerializeField] private Transform[] waypoints;
 
     private int currentWaypoint;
+
+
+  
     void Start()
     {
-        
+        Set();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(transform.position != waypoints[currentWaypoint].position)
+        APTime();
+
+
+        Patrol();
+
+
+    }
+    public void Set()
+    {
+        aparitionTime = Random.Range(EnemyData.minTime, EnemyData.maxTime);
+    }
+
+
+
+    private void APTime()
+    {
+        aparitionTime -= Time.deltaTime;
+
+        if (aparitionTime <= 0)
+        {
+            Vulnerable = false;
+        }
+    }
+
+    private void Patrol()
+    {
+        if (transform.position != waypoints[currentWaypoint].position)
         {
             transform.position = Vector2.MoveTowards(transform.position, waypoints[currentWaypoint].position, speed * Time.deltaTime);
         }
@@ -33,9 +68,7 @@ public class PatrolAI : MonoBehaviour
 
             Flip();
         }
-
     }
-
     /*IEnumerator Wait()
     {
         yield return new WaitForSeconds(waitTime);

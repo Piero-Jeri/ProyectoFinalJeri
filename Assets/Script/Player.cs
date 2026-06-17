@@ -19,6 +19,9 @@ public class Player : BaseEntity
 
     public Animator animator;
 
+    [SerializeField] private Transform controladorDisparo;
+    [SerializeField] private float rango;
+
 
     public Vector2 MoveInput;
     public float MoveSpeed;
@@ -72,6 +75,7 @@ public class Player : BaseEntity
 
     }
 
+
     void Start()
     {
         //InvokeRepeating("AutoAttackEnemies", 1f, 1f);
@@ -84,12 +88,13 @@ public class Player : BaseEntity
 
     private void OnAttack2(InputAction.CallbackContext context)
     {
-        Debug.Log("A1");
+        Debug.Log("A2");
     }
 
     private void OnAttack1(InputAction.CallbackContext context)
     {
-        Debug.Log("A2");
+        Debug.Log("A1");
+        Shoot();
     }
 
     private void OnPlayerMoveCanceled(InputAction.CallbackContext context)
@@ -110,6 +115,19 @@ public class Player : BaseEntity
             transform.position += (Vector3)MoveInput * MoveSpeed * Time.deltaTime;
         }
 
+    }
+
+    public void Shoot()
+    {
+        RaycastHit2D raycastHit2D = Physics2D.Raycast(controladorDisparo.position, controladorDisparo.right, rango);
+
+        if (raycastHit2D)
+        {
+            if (raycastHit2D.transform.CompareTag("Enemy"))
+            {
+
+            }
+        }
     }
 
     /*public void AutoAttackEnemies()

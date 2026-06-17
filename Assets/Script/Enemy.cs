@@ -2,13 +2,12 @@ using UnityEngine;
 
 public class Enemy : BaseEntity
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    //Tratar de que el enemigo reciba daño y su contador de aparición se reinicie
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
