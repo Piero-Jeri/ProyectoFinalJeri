@@ -53,6 +53,7 @@ public class PatrolAI : MonoBehaviour
         if (aparitionTime <= 0)
         {
             Vulnerable = false;
+            animator.SetBool("OnAparition", false);
         }
     }
 
