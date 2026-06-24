@@ -40,8 +40,7 @@ public class AnimatorController : MonoBehaviour
         MoveInput = context.ReadValue<Vector2>();
 
         if (MoveInput.x != 0)
-            animator.SetBool("IsRunning", true);
-            animator.SetBool("OnWalking", true);
+            //animator.SetBool("IsRunning", true);
 
 
 
@@ -54,8 +53,7 @@ public class AnimatorController : MonoBehaviour
     private void OnMovementFinish(InputAction.CallbackContext context)
     {
         MoveInput = Vector2.zero;
-        animator.SetBool("IsRunning", false);
-        animator.SetBool("OnWalking", false);
+        //animator.SetBool("IsRunning", false);
     }
     private void OnJumpStart(InputAction.CallbackContext context)
     {
