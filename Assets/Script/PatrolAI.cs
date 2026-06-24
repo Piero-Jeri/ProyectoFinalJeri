@@ -14,6 +14,8 @@ public class PatrolAI : MonoBehaviour
     //[SerializeField] private float waitTime;
     [SerializeField] private Transform[] waypoints;
 
+    public Animator animator;
+
     private int currentWaypoint;
 
 
@@ -27,9 +29,13 @@ public class PatrolAI : MonoBehaviour
     void Update()
     {
         APTime();
+        //Patrol();
 
 
-        Patrol();
+        if (Vulnerable == false)
+        {
+            Patrol();
+        }
 
 
     }
@@ -55,6 +61,7 @@ public class PatrolAI : MonoBehaviour
         if (transform.position != waypoints[currentWaypoint].position)
         {
             transform.position = Vector2.MoveTowards(transform.position, waypoints[currentWaypoint].position, speed * Time.deltaTime);
+            animator.SetBool("IsWalking", true);
         }
         else
         {

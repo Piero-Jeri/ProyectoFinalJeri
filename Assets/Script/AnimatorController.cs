@@ -33,7 +33,7 @@ public class AnimatorController : MonoBehaviour
     }
     void Update()
     {
-        animator.SetBool("IsGrounded", controller.IsGrounded);
+        //animator.SetBool("IsGrounded", controller.IsGrounded);
     }
     private void OnMovementStart(InputAction.CallbackContext context)
     {
@@ -41,6 +41,10 @@ public class AnimatorController : MonoBehaviour
 
         if (MoveInput.x != 0)
             animator.SetBool("IsRunning", true);
+            animator.SetBool("OnWalking", true);
+
+
+
 
         // (MoveInput.x == -1) GetComponent<SpriteRenderer>().flipX = true;
 
@@ -51,6 +55,7 @@ public class AnimatorController : MonoBehaviour
     {
         MoveInput = Vector2.zero;
         animator.SetBool("IsRunning", false);
+        animator.SetBool("OnWalking", false);
     }
     private void OnJumpStart(InputAction.CallbackContext context)
     {

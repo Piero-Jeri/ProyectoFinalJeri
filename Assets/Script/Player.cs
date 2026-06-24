@@ -89,22 +89,27 @@ public class Player : BaseEntity
     private void OnAttack2(InputAction.CallbackContext context)
     {
         Debug.Log("A2");
+
     }
 
     private void OnAttack1(InputAction.CallbackContext context)
     {
         Debug.Log("A1");
+        animator.SetTrigger("OnShooting");
         Shoot();
     }
 
     private void OnPlayerMoveCanceled(InputAction.CallbackContext context)
     {
         MoveInput = Vector2.zero;
+        animator.SetBool("OnWalking", false);
     }
 
     private void OnPlayerMove(InputAction.CallbackContext context)
     {
         MoveInput = context.ReadValue<Vector2>();
+        animator.SetBool("OnWalking", true);
+
     }
 
 
