@@ -125,6 +125,7 @@ public class Player : BaseEntity
     public void Shoot()
     {
         RaycastHit2D raycastHit2D = Physics2D.Raycast(controladorDisparo.position, controladorDisparo.right, rango);
+        Debug.DrawRay(transform.position, Vector2.right * 1.5f, Color.red);
 
         if (raycastHit2D)
         {
