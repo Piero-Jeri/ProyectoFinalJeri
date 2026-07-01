@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 
 
-public class CharacterController : BaseEntity, IDamageable
+public class CharacterController : BaseEntity
 {
     public InputSystem_Actions inputs;
  

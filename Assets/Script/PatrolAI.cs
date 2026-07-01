@@ -6,6 +6,7 @@ public class PatrolAI : MonoBehaviour
 {
     public EnemyData EnemyData;
 
+
     [SerializeField] private float aparitionTime = 0;
 
     private bool Vulnerable = true;
@@ -18,8 +19,6 @@ public class PatrolAI : MonoBehaviour
 
     private int currentWaypoint;
 
-
-  
     void Start()
     {
         Set();
@@ -34,7 +33,7 @@ public class PatrolAI : MonoBehaviour
 
         if (Vulnerable == false)
         {
-            Patrol();
+
         }
 
 

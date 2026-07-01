@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class TimerController : MonoBehaviour
 {
-
     public float MaxTimer; //= GameManager.instance.tiempoMaximo;
     public float currentTime;
     public Slider slider;

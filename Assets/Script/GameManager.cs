@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Noche pasada");
             tiempoActivo = false;
-            SceneManager.LoadScene("Credits");
         }
     }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public enum PlayerController
 {
@@ -13,14 +14,21 @@ public enum PlayerController
 
 public class Player : BaseEntity
 {
+    public AudioManager audioManager;
+
     public InputSystem_Actions inputs;
 
     public PlayerController playerController;
 
     public Animator animator;
 
-    [SerializeField] private Transform controladorDisparo;
-    [SerializeField] private float rango;
+    //[SerializeField] private Transform controladorDisparo;
+    //[SerializeField] private float rango;
+
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private float distance = 3f;
+    [SerializeField] private LayerMask enemyLayer;
+
 
 
     public Vector2 MoveInput;
@@ -84,6 +92,8 @@ public class Player : BaseEntity
     void Update()
     {
         OnMove();
+
+   
     }
 
     private void OnAttack2(InputAction.CallbackContext context)
@@ -95,8 +105,17 @@ public class Player : BaseEntity
     private void OnAttack1(InputAction.CallbackContext context)
     {
         Debug.Log("A1");
+
         animator.SetTrigger("OnShooting");
-        Shoot();
+
+        audioManager.playDisparar();
+
+        if (context.performed)
+        {
+            Debug.Log("atacado!");
+
+            Shoot();
+        }
     }
 
     private void OnPlayerMoveCanceled(InputAction.CallbackContext context)
@@ -109,7 +128,7 @@ public class Player : BaseEntity
     {
         MoveInput = context.ReadValue<Vector2>();
         animator.SetBool("OnWalking", true);
-
+        audioManager.playCaminar();
     }
 
 
@@ -118,22 +137,82 @@ public class Player : BaseEntity
         if(MoveInput != Vector2.zero)
         {
             transform.position += (Vector3)MoveInput * MoveSpeed * Time.deltaTime;
+
+            //transform.Translate(MoveInput * 5f * Time.deltaTime);
+
+            if (MoveInput.x > 0)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else if (MoveInput.x < 0)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+
         }
 
     }
 
     public void Shoot()
     {
-        RaycastHit2D raycastHit2D = Physics2D.Raycast(controladorDisparo.position, controladorDisparo.right, rango);
+        /*RaycastHit2D raycastHit2D = Physics2D.Raycast(controladorDisparo.position, controladorDisparo.right, rango);
         Debug.DrawRay(transform.position, Vector2.right * 1.5f, Color.red);
 
         if (raycastHit2D)
         {
             if (raycastHit2D.transform.CompareTag("Enemy"))
             {
-
+                Destroy(gameObject);
             }
+        }*/
+        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, firePoint.right, distance, enemyLayer);
+
+
+        if (hit.collider != null)
+        {
+            IDamageable damageable = hit.collider.GetComponent<IDamageable>();
+            Debug.Log("Golpeó: " + hit.collider.name);
+
+            if (damageable != null)
+            {
+                damageable.TakeDamage(1);
+            }
+            
         }
+        else
+            {
+                Debug.Log("No golpeó nada");
+            }
+
+    }
+    private void OnDrawGizmos()
+    {
+        if (firePoint == null) return;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(
+            firePoint.position,
+            firePoint.position + firePoint.right * distance);
+    }
+
+    [SerializeField] private int health = 1;
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        Debug.Log("Daño al Player");
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("El jugador murió");
+        Destroy(gameObject);
     }
 
     /*public void AutoAttackEnemies()

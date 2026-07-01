@@ -2,8 +2,8 @@ using UnityEngine;
 
 public interface IDamageable
 {
-    public void TakeDamage();
-    // public abstract void TakeDamage();
+    public void TakeDamage(int damage);
+
 }
 public interface IInteractable
 {
