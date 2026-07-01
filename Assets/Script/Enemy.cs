@@ -22,6 +22,10 @@ public class Enemy : BaseEntity, IDamageable
         Destroy(gameObject);
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Trigger con " + other.name);
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
