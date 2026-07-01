@@ -1,5 +1,19 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+public enum waypointType 
+{
+
+    None,
+    one,
+    two,
+    three,
+    four,
+    five
+
+}
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +22,19 @@ public class GameManager : MonoBehaviour
     public float tiempoMaximo;
     private float tiempoActual;
     private bool tiempoActivo = false;
+
+    public GameObject Player;
+
+    public List<GameObject> WaypointsE1;
+
+    public List<GameObject> WaypointsE2;
+
+    public List<GameObject> WaypointsE3;
+
+    public List<GameObject> WaypointsE4;
+
+    public List<GameObject> WaypointsE5;
+
 
     private void Awake()
     {

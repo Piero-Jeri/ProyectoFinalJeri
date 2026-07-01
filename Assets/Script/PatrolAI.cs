@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -13,11 +14,13 @@ public class PatrolAI : MonoBehaviour
 
     [SerializeField] private float speed;
     //[SerializeField] private float waitTime;
-    [SerializeField] private Transform[] waypoints;
+    [SerializeField] private List<GameObject> waypoints;
 
     public Animator animator;
 
     private int currentWaypoint;
+
+    public waypointType waypointType;
 
     void Start()
     {
@@ -28,22 +31,46 @@ public class PatrolAI : MonoBehaviour
     void Update()
     {
         APTime();
-        //Patrol();
+
+        
 
 
         if (Vulnerable == false)
         {
-
+            Patrol();
         }
 
 
     }
     public void Set()
     {
+       
+        switch (waypointType)
+        {
+            case waypointType.None:
+                break;
+            case waypointType.one:
+                waypoints = new(GameManager.instance.WaypointsE1);
+                break;
+            case waypointType.two:
+                waypoints = new(GameManager.instance.WaypointsE2);
+                break;
+            case waypointType.three:
+                waypoints = new(GameManager.instance.WaypointsE3);
+                break;
+            case waypointType.four:
+                waypoints = new(GameManager.instance.WaypointsE4);
+                break;
+            case waypointType.five:
+                waypoints = new(GameManager.instance.WaypointsE5);
+                break;
+            default:
+                break;
+        }
         aparitionTime = Random.Range(EnemyData.minTime, EnemyData.maxTime);
     }
 
-
+    //public List<GameObject> Waypoints;
 
     private void APTime()
     {
@@ -58,9 +85,9 @@ public class PatrolAI : MonoBehaviour
 
     private void Patrol()
     {
-        if (transform.position != waypoints[currentWaypoint].position)
+        if (transform.position != waypoints[currentWaypoint].transform.position)
         {
-            transform.position = Vector2.MoveTowards(transform.position, waypoints[currentWaypoint].position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, waypoints[currentWaypoint].transform.position, speed * Time.deltaTime);
             animator.SetBool("IsWalking", true);
         }
         else
@@ -68,7 +95,7 @@ public class PatrolAI : MonoBehaviour
             //StartCoroutine(Wait());
             currentWaypoint++;
 
-            if (currentWaypoint == waypoints.Length)
+            if (currentWaypoint == waypoints.Count)
             {
                 currentWaypoint = 0;
             }
@@ -91,7 +118,7 @@ public class PatrolAI : MonoBehaviour
 
     private void Flip()
     {
-        if (transform.position.x > waypoints[currentWaypoint].position.x)
+        if (transform.position.x > waypoints[currentWaypoint].transform.position.x)
         {
             transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }

@@ -4,21 +4,21 @@ public class FollowAI : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float minDistance;
-    [SerializeField] private Transform player;
+    [SerializeField] private GameObject player;
 
     private bool isFacingRight = true;
 
     void Start()
     {
-        
+        player = GameManager.instance.Player;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Vector2.Distance(transform.position, player.position) < minDistance)
+        if (Vector2.Distance(transform.position, player.transform.position) < minDistance)
         {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         }
 
         bool isPlayerRight = transform.position.x < player.transform.position.x;

@@ -109,7 +109,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrollAI
   EnemyData: {fileID: 0}
-  followAI: {fileID: 0}
   aparitionTime: 60
   speed: 4
   waypoints:
@@ -141,6 +140,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   animator: {fileID: 1058700193846772540}
+  waypointType: 3
 --- !u!95 &1058700193846772540
 Animator:
   serializedVersion: 7
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FollowAI
   speed: 6
   minDistance: 3
-  player: {fileID: 1625543226830154287, guid: b46c65462c7d0c44a8334e01f0b75533, type: 3}
+  player: {fileID: 1380877165273678594, guid: b46c65462c7d0c44a8334e01f0b75533, type: 3}
 --- !u!114 &-703643012594554080
 MonoBehaviour:
   m_ObjectHideFlags: 0
