@@ -1,12 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    //[SerializeField] private Transform target;
-    public GameObject target;
+    [SerializeField] private Transform target;
     [SerializeField] private float followSpeed;
+    public Vector3 desplazamiento;
 
-    private float target_poseX;
+    private void Update()
+    {
+        Vector3 posicionDeseada = target.position + desplazamiento;
+
+        transform.position = Vector3.Lerp(transform.position, posicionDeseada, followSpeed);
+    }
+    /*private float target_poseX;
     private float target_poseY;
 
     private float posX;
@@ -31,12 +39,11 @@ public class CameraFollow : MonoBehaviour
         posY = target_poseY + alturaMin;
 
         /*Vector3 targetPos = new Vector3(posX, posY);
-        targetPos.z = -10;*/
+        targetPos.z = -10;
 
-        transform.position = Vector3.Lerp(transform.position, new Vector3(posX, posY, -10), 1);
-    }
+        transform.position = Vector3.Lerp(transform.position, new Vector3(posX, posY, -10), 1);*/
 
-    private void moveCam()
+    /*private void moveCam()
     {
         if (target)
         {
@@ -54,10 +61,5 @@ public class CameraFollow : MonoBehaviour
             }
         }
         transform.position = Vector3.Lerp(transform.position, new Vector3(posX, posY, -10), followSpeed * Time.deltaTime);
-    }
-
-    private void Update()
-    {
-        moveCam();
-    }
+    }*/
 }

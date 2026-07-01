@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    [SerializeField] private float tiempoMaximo;
+    public float tiempoMaximo;
     private float tiempoActual;
     private bool tiempoActivo = false;
 
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Noche pasada");
             tiempoActivo = false;
+            SceneManager.LoadScene("Credits");
         }
     }
 
