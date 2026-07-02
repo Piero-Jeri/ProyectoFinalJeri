@@ -6826,7 +6826,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -17409,7 +17409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 411e80ca4fb963541adef8303656c98b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  tiempoMaximo: 360
+  tiempoMaximo: 300
   Player: {fileID: 2143994590}
   WaypointsE1:
   - {fileID: 221811158}
@@ -29216,17 +29216,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1717944536029450911, guid: b46c65462c7d0c44a8334e01f0b75533, type: 3}
-      propertyPath: m_SortingOrder
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 8902884573878282901, guid: b46c65462c7d0c44a8334e01f0b75533, type: 3}
       propertyPath: distance
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8902884573878282901, guid: b46c65462c7d0c44a8334e01f0b75533, type: 3}
-      propertyPath: enemyLayer.m_Bits
-      value: 64
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29284,6 +29276,10 @@ PrefabInstance:
     - target: {fileID: 3131864078778761516, guid: 92c757aea0ceb504fae59d6716bb3f7d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739984291288458748, guid: 92c757aea0ceb504fae59d6716bb3f7d, type: 3}
+      propertyPath: aparitionTime
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
