@@ -85,7 +85,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 8c9956e122e69c64b84e0e0b27d54e92, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -117,14 +117,15 @@ MonoBehaviour:
   playerController: 1
   animator: {fileID: 1963637428220873483}
   firePoint: {fileID: 1625543226830154287}
-  distance: 3
+  distance: 5
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   MoveInput: {x: 0, y: 0}
   MoveSpeed: 5
   range: 0
   Enemys: []
+  health: 1
 --- !u!95 &1963637428220873483
 Animator:
   serializedVersion: 7

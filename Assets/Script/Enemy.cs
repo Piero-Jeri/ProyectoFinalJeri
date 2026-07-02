@@ -24,13 +24,13 @@ public class Enemy : BaseEntity, IDamageable
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Trigger con " + other.name);
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
+        Debug.Log("Trigger con " + other.name + other.gameObject.tag);
+         
+        if (other.gameObject.tag == "Player")
         {
-            IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+            Debug.Log("trigger");
+
+            IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
 
             if (damageable != null)
             {
@@ -39,6 +39,10 @@ public class Enemy : BaseEntity, IDamageable
                 damageable.TakeDamage(1);
             }
         }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
     }
     void Start()
     {

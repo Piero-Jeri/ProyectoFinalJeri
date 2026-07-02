@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3684483190447727533}
   - component: {fileID: -8672497251726554447}
   - component: {fileID: -6966427745553104425}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy (4)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrollAI
   EnemyData: {fileID: 0}
-  aparitionTime: 20
+  aparitionTime: 5
   speed: 4
   waypoints:
   - {fileID: 0}

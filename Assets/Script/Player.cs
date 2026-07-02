@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public enum PlayerController
@@ -12,7 +13,7 @@ public enum PlayerController
     Player2
 }
 
-public class Player : BaseEntity
+public class Player : BaseEntity ,IDamageable
 {
     public AudioManager audioManager;
 
@@ -132,6 +133,8 @@ public class Player : BaseEntity
     }
 
 
+    private Vector3 ShootDirection = Vector3.right;
+
     public void OnMove()
     {
         if(MoveInput != Vector2.zero)
@@ -143,10 +146,13 @@ public class Player : BaseEntity
             if (MoveInput.x > 0)
             {
                 transform.localScale = new Vector3(1, 1, 1);
+                ShootDirection = Vector3.right;
+
             }
             else if (MoveInput.x < 0)
             {
                 transform.localScale = new Vector3(-1, 1, 1);
+                ShootDirection = Vector3.left;
             }
 
         }
@@ -165,11 +171,12 @@ public class Player : BaseEntity
                 Destroy(gameObject);
             }
         }*/
-        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, firePoint.right, distance, enemyLayer);
+        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, ShootDirection, distance ,enemyLayer);
 
 
         if (hit.collider != null)
         {
+
             IDamageable damageable = hit.collider.GetComponent<IDamageable>();
             Debug.Log("Golpeó: " + hit.collider.name);
 
@@ -212,7 +219,8 @@ public class Player : BaseEntity
     private void Die()
     {
         Debug.Log("El jugador murió");
-        Destroy(gameObject);
+        SceneManager.LoadScene(5);
+       // Destroy(gameObject);
     }
 
     /*public void AutoAttackEnemies()

@@ -16,9 +16,10 @@ public class FollowAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) < minDistance)
+        if (Vector2.Distance(transform.position, player.transform.position) < minDistance && Vector2.Distance(transform.position, player.transform.position) > 0.6f)
         {
-            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+            Vector3 dir = (player.transform.position - transform.position).normalized;
+            transform.position += dir *  speed * Time.deltaTime;
         }
 
         bool isPlayerRight = transform.position.x < player.transform.position.x;
